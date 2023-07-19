@@ -2,23 +2,38 @@ import { FunctionDeclaration } from '../../interfaces/FunctionDeclaration'
 
 async function callback({
   date,
-  yesterday,
-  today,
-  impediment,
+  notes,
 }: {
   date?: string
-  yesterday?: string
-  today?: string
-  impediment?: string
+  notes?: string
 }): Promise<string> {
-  console.debug('▶ daily', { date, yesterday, today, impediment })
+  console.debug('▶ daily', { date, notes })
 
   const daily = [
     {
-      date: '2021-09-01',
-      yesterday: 'Fechei os PRs #1, #2 e #3',
-      today: 'Irei fazer os PRs #4 e #5',
-      impediment: 'Não há',
+      date: new Date().toString(),
+      yesterday: [
+        {
+          pullRequests: [
+            { id: 1, title: 'PR #1', status: 'approved' },
+            { id: 10, title: 'PR #10', status: 'rejected' },
+            { id: 11, title: 'PR #10', status: 'rejected' },
+          ],
+          bugs: [
+            { id: 1, title: 'Bug #1', status: 'approved' },
+            { id: 20, title: 'Bug #1', status: 'approved' },
+            { id: 100, title: 'Bug #1', status: 'approved' },
+          ],
+          helps: ['Júnior com o problema na imagem doker'],
+        },
+      ],
+      today: [
+        {
+          stories: [{ id: 30, title: 'Login' }],
+        },
+      ],
+      impediment: [],
+      notes,
     },
   ]
 
@@ -37,19 +52,9 @@ export const daily: FunctionDeclaration = {
         description:
           'Data que se refere a daily, se não informado, assume a data atual.',
       },
-      yesterday: {
+      notes: {
         type: 'string',
-        description: 'O que eu fiz ontem, se não informado, assuma como OK.',
-      },
-      today: {
-        type: 'string',
-        description:
-          "O que eu fiz ontem, se não informado, assuma como 'irei resolver os PRs e Bugs no Github'.",
-      },
-      impediment: {
-        type: 'string',
-        description:
-          "Se há algum impedimento, se não informado, assuma como 'Sem impedimentos'.",
+        description: 'Notas adicionais.',
       },
     },
     required: [],
