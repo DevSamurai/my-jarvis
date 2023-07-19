@@ -3,13 +3,13 @@ import {
   ChatCompletionRequestMessageFunctionCall,
   Configuration,
   OpenAIApi,
-} from "openai"
+} from 'openai'
 
-import ChatMessage from "../interfaces/ChatMessage"
+import ChatMessage from '../interfaces/ChatMessage'
 
-import { functionDeclarations } from "../functions"
+import { functionDeclarations } from '../functions'
 
-import { config } from "./config"
+import { config } from './config'
 
 const configuration = new Configuration({
   apiKey: config.openAI.apiToken,
@@ -24,18 +24,18 @@ export async function createChatCompletion({
 }): Promise<string> {
   try {
     const response = await openai.createChatCompletion({
-      model: "gpt-4",
+      model: 'gpt-4',
       temperature: 0.7,
       max_tokens: 1024,
       messages,
       functions: functionDeclarations,
-      function_call: "auto",
+      function_call: 'auto',
     })
 
     // https://platform.openai.com/docs/guides/gpt/chat-completions-api
     const finishReason = response.data.choices[0]?.finish_reason
 
-    if (!!finishReason) {
+    if (finishReason) {
       console.debug(`✋ ${finishReason}`)
     }
 
@@ -43,7 +43,7 @@ export async function createChatCompletion({
 
     if (message?.function_call) {
       const functionChatCompletionRequestMessage = await callFunction(
-        message?.function_call
+        message?.function_call,
       )
 
       if (functionChatCompletionRequestMessage) {
@@ -55,13 +55,13 @@ export async function createChatCompletion({
 
     return message?.content as string
   } catch (error) {
-    console.error("🔴 error on run openai", { error })
+    console.error('🔴 error on run openai', { error })
     return undefined as unknown as string
   }
 }
 
 async function callFunction(
-  functionCall: ChatCompletionRequestMessageFunctionCall | undefined
+  functionCall: ChatCompletionRequestMessageFunctionCall | undefined,
 ): Promise<ChatCompletionRequestMessage | undefined> {
   if (!functionCall) return
 
@@ -72,5 +72,5 @@ async function callFunction(
     .find((item) => item.name === functionName)
     ?.callback(functionParameters)
 
-  return { role: "function", name: functionName, content: functionReturn }
+  return { role: 'function', name: functionName, content: functionReturn }
 }

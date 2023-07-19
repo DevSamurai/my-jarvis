@@ -1,5 +1,5 @@
-import { ChatCompletionFunctions } from "openai"
+import { ChatCompletionFunctions } from 'openai'
 
 export interface FunctionDeclaration extends ChatCompletionFunctions {
-  callback: (parameters: Object) => Promise<string>
+  callback: (parameters: object) => Promise<string>
 }

@@ -1,14 +1,14 @@
-import { githubActionStatus } from "./github/githubActionStatus"
-import { githubPullRequests } from "./github/githubPullRequests"
+import { githubActionStatus } from './github/githubActionStatus'
+import { githubPullRequests } from './github/githubPullRequests'
 
-import { daily } from "./sprint/daily"
+import { daily } from './sprint/daily'
 
 import { data } from './me/data'
 import { contacts } from './me/contacts'
 
-import { send } from "./email/send"
+import { send } from './email/send'
 
-import { today } from "./date/today"
+import { today } from './date/today'
 
 // import { lights } from "./home/lights"
 
@@ -20,5 +20,5 @@ export const functionDeclarations = [
   daily,
   send,
   // lights
-  today
+  today,
 ]

@@ -1,18 +1,18 @@
-import { FunctionDeclaration } from "../../interfaces/FunctionDeclaration"
+import { FunctionDeclaration } from '../../interfaces/FunctionDeclaration'
 
 async function callback(): Promise<string> {
-  console.debug("▶ today", { })
+  console.debug('▶ today', {})
 
-  const response = { date: '2023-07-18 19:42:00' }
+  const response = { date: new Date().toISOString() }
 
   return JSON.stringify(response)
 }
 
 export const today: FunctionDeclaration = {
-  name: "today",
-  description: "Retorna a data e hora atual.",
+  name: 'today',
+  description: 'Retorna a data e hora atual.',
   parameters: {
-    type: "object",
+    type: 'object',
     properties: {},
     required: [],
   },

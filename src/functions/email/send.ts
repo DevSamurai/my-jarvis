@@ -1,7 +1,17 @@
-import { FunctionDeclaration } from "../../interfaces/FunctionDeclaration"
+import { FunctionDeclaration } from '../../interfaces/FunctionDeclaration'
 
-async function callback({ date, email, subject, body }: { date?: string, email?: string, subject?: string, body?: string }): Promise<string> {
-  console.debug("▶ send", { date, email, subject, body })
+async function callback({
+  date,
+  email,
+  subject,
+  body,
+}: {
+  date?: string
+  email?: string
+  subject?: string
+  body?: string
+}): Promise<string> {
+  console.debug('▶ send', { date, email, subject, body })
 
   const response = { date, email, subject, body, status: 'sent' }
 
@@ -9,26 +19,27 @@ async function callback({ date, email, subject, body }: { date?: string, email?:
 }
 
 export const send: FunctionDeclaration = {
-  name: "send",
-  description: "Envia um email.",
+  name: 'send',
+  description: 'Envia um email.',
   parameters: {
-    type: "object",
+    type: 'object',
     properties: {
       date: {
-        type: "string",
-        description: "Data para envio do email. Padrão é a data atual.",
+        type: 'string',
+        description:
+          'Data para envio do email no formato ISO 8601. Padrão é a data atual.',
       },
       email: {
-        type: "string",
-        description: "Endereço de email.",
+        type: 'string',
+        description: 'Endereço de email.',
       },
       subject: {
-        type: "string",
-        description: "Assunto do email.",
+        type: 'string',
+        description: 'Assunto do email.',
       },
       body: {
-        type: "string",
-        description: "Corpo do email.",
+        type: 'string',
+        description: 'Corpo do email.',
       },
     },
     required: ['email', 'subject', 'body'],
