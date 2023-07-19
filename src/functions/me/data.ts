@@ -17,7 +17,7 @@ async function callback(): Promise<string> {
     },
     social: {
       linkedin: 'https://www.linkedin.com/in/felipefontoura/',
-      github: 'https://github.com/felipefontoura',
+      github: 'https://github.com/DevSamurai',
     },
     techSkills: [
       { name: 'JavaScript', level: 'Avançado' },

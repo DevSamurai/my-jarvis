@@ -1,7 +1,8 @@
 import { today } from './date/today'
 
-import { githubActionStatus } from './github/githubActionStatus'
-import { githubPullRequests } from './github/githubPullRequests'
+import { pullRequests } from './github/pullRequests'
+import { issues } from './github/issues'
+import { repositories } from './github/repositories'
 
 import { daily } from './sprint/daily'
 import { stories } from './sprint/stories'
@@ -13,8 +14,9 @@ import { send } from './email/send'
 
 export const functionDeclarations = [
   today,
-  githubActionStatus,
-  githubPullRequests,
+  pullRequests,
+  issues,
+  repositories,
   data,
   contacts,
   daily,

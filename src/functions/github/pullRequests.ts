@@ -5,25 +5,25 @@ async function callback({
 }: {
   repository?: string
 }): Promise<string> {
-  console.debug('▶ githubIssues', { repository })
+  console.debug('▶ pullRequests', { repository })
 
   const repositories = [
     {
       name: 'openai-chatbot',
-      issues: [{ bugs: 1 }, { features: 2 }],
+      pullRequests: 1,
     },
     {
       name: 'lms',
-      issues: [{ bugs: 1 }, { features: 2 }],
+      pullRequests: 2,
     },
   ]
 
   return JSON.stringify(repositories)
 }
 
-export const githubIssues: FunctionDeclaration = {
-  name: 'githubIssues',
-  description: 'Retorna as issues por tipo em cada projeto.',
+export const pullRequests: FunctionDeclaration = {
+  name: 'pullRequests',
+  description: 'Retorna a quantidade de pull requests de cada repositório.',
   parameters: {
     type: 'object',
     properties: {
