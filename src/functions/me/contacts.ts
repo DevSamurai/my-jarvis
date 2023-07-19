@@ -6,8 +6,13 @@ async function callback(): Promise<string> {
   const response = [
     {
       fullName: 'Angelina',
-      email: 'angelina@example-mail.com',
-      role: 'gerente',
+      email: 'angelina@company.com',
+      role: 'Gerente de projeto',
+    },
+    {
+      fullName: 'Alpha Team',
+      email: 'alphateam@company.com',
+      role: 'Time de desenvolvimento',
     },
   ]
 
