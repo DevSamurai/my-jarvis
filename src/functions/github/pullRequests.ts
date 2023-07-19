@@ -1,38 +1,40 @@
 import { FunctionDeclaration } from '../../interfaces/FunctionDeclaration'
+import { getPullRequests } from './api'
 
 async function callback({
-  repository,
+  owner,
+  name,
 }: {
-  repository?: string
+  owner?: string
+  name?: string
 }): Promise<string> {
-  console.debug('▶ pullRequests', { repository })
+  console.debug('▶ pullRequests', { owner, name })
 
-  const repositories = [
-    {
-      name: 'openai-chatbot',
-      pullRequests: 1,
-    },
-    {
-      name: 'lms',
-      pullRequests: 2,
-    },
-  ]
+  if (!owner || !name) return JSON.stringify({ error: 'Missing owner or name' })
 
-  return JSON.stringify(repositories)
+  const pullRequests = await getPullRequests(owner, name)
+
+  console.debug('☑ pullRequests', JSON.stringify(pullRequests, null, 2))
+
+  return JSON.stringify(pullRequests)
 }
 
 export const pullRequests: FunctionDeclaration = {
   name: 'pullRequests',
-  description: 'Retorna a quantidade de pull requests de cada repositório.',
+  description: 'Retorna os pull requests de cada repositório.',
   parameters: {
     type: 'object',
     properties: {
-      repository: {
+      owner: {
         type: 'string',
-        description: 'Nome do projeto ou repositório no Github.',
+        description: 'Proprietário do repostório.',
+      },
+      name: {
+        type: 'string',
+        description: 'Nome do repositório.',
       },
     },
-    required: [],
+    required: ['owner', 'name'],
   },
   callback,
 }

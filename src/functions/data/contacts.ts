@@ -1,22 +1,11 @@
 import { FunctionDeclaration } from '../../interfaces/FunctionDeclaration'
 
+import { contacts as data } from '../../data/contacts'
+
 async function callback(): Promise<string> {
   console.debug('▶ contacts')
 
-  const response = [
-    {
-      fullName: 'Angelina',
-      email: 'angelina@company.com',
-      role: 'Gerente de projeto',
-    },
-    {
-      fullName: 'Alpha Team',
-      email: 'alphateam@company.com',
-      role: 'Time de desenvolvimento',
-    },
-  ]
-
-  return JSON.stringify(response)
+  return JSON.stringify(data)
 }
 
 export const contacts: FunctionDeclaration = {

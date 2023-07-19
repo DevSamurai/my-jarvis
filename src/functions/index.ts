@@ -7,18 +7,16 @@ import { repositories } from './github/repositories'
 import { daily } from './sprint/daily'
 import { stories } from './sprint/stories'
 
-import { data } from './me/data'
-import { contacts } from './me/contacts'
+import { contacts } from './data/contacts'
 
 import { send } from './email/send'
 
 export const functionDeclarations = [
   today,
+  contacts,
   pullRequests,
   issues,
   repositories,
-  data,
-  contacts,
   daily,
   stories,
   send,

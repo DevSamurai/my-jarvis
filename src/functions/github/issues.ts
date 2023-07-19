@@ -3,15 +3,19 @@ import { FunctionDeclaration } from '../../interfaces/FunctionDeclaration'
 import { getIssues } from './api'
 
 async function callback({
-  repository,
+  owner,
+  name,
 }: {
-  repository?: string
+  owner?: string
+  name?: string
 }): Promise<string> {
-  console.debug('▶ issues', { repository })
+  console.debug('▶ issues', { owner, name })
 
-  if (!repository) return JSON.stringify([])
+  if (!owner || !name) return JSON.stringify({ error: 'Missing owner or name' })
 
-  const issues = await getIssues(repository)
+  const issues = await getIssues(owner, name)
+
+  console.debug('☑ issues', JSON.stringify(issues, null, 2))
 
   return JSON.stringify(issues)
 }
@@ -22,13 +26,16 @@ export const issues: FunctionDeclaration = {
   parameters: {
     type: 'object',
     properties: {
-      repository: {
+      owner: {
         type: 'string',
-        description:
-          'Nome do projeto ou repositório no Github no formato OWNER/REPO.',
+        description: 'Proprietário do repostório.',
+      },
+      name: {
+        type: 'string',
+        description: 'Nome do repositório.',
       },
     },
-    required: [],
+    required: ['owner', 'name'],
   },
   callback,
 }
