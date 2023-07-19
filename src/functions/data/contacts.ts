@@ -3,7 +3,7 @@ import { FunctionDeclaration } from '../../interfaces/FunctionDeclaration'
 import { contacts as data } from '../../data/contacts'
 
 async function callback(): Promise<string> {
-  console.debug('▶ contacts')
+  // console.debug('▶ contacts')
 
   return JSON.stringify(data)
 }

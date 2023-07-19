@@ -11,7 +11,7 @@ async function callback({
   subject?: string
   body?: string
 }): Promise<string> {
-  console.debug('▶ send', { date, email, subject, body })
+  // console.debug('▶ send', { date, email, subject, body })
 
   const response = { date, email, subject, body, status: 'sent' }
 

@@ -13,6 +13,7 @@ export const me = {
   github: {
     login: 'felipefontoura',
     url: 'https://github.com/felipefontoura',
+    defaultRepositories: ['felipefontoura/code-challenges'],
   },
   techSkills: [
     { name: 'JavaScript', level: 'Avançado' },

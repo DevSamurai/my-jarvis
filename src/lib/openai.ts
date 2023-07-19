@@ -33,11 +33,11 @@ export async function createChatCompletion({
     })
 
     // https://platform.openai.com/docs/guides/gpt/chat-completions-api
-    const finishReason = response.data.choices[0]?.finish_reason
+    // const finishReason = response.data.choices[0]?.finish_reason
 
-    if (finishReason) {
-      console.debug(`✋ ${finishReason}`)
-    }
+    // if (finishReason) {
+    //   console.debug(`✋ ${finishReason}`)
+    // }
 
     const message = response.data.choices[0]?.message
 

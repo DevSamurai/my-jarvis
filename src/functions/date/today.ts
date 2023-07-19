@@ -1,7 +1,7 @@
 import { FunctionDeclaration } from '../../interfaces/FunctionDeclaration'
 
 async function callback(): Promise<string> {
-  console.debug('▶ today', {})
+  // console.debug('▶ today', {})
 
   const response = { date: new Date().toString() }
 

@@ -3,13 +3,13 @@ import { FunctionDeclaration } from '../../interfaces/FunctionDeclaration'
 import { getRepositories } from './api'
 
 async function callback({ login }: { login?: string }): Promise<string> {
-  console.debug('▶ repositories', { login })
+  // console.debug('▶ repositories', { login })
 
   if (!login) return JSON.stringify({ error: 'Login não informado.' })
 
   const repositories = await getRepositories(login)
 
-  console.debug('☑ repositories', JSON.stringify(repositories, null, 2))
+  // console.debug('☑ repositories', JSON.stringify(repositories, null, 2))
 
   return JSON.stringify(repositories)
 }

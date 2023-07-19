@@ -1,11 +1,11 @@
 import { FunctionDeclaration } from '../../interfaces/FunctionDeclaration'
 
 async function callback({ date }: { date?: string }): Promise<string> {
-  console.debug('▶ stories', { date })
+  // console.debug('▶ stories', { date })
 
   const response = [
     {
-      date: new Date().toString(),
+      date,
       stories: [
         { id: 30, title: 'Login', assigne: 'Felipe Fontoura' },
         { id: 32, title: 'Logout', assigne: 'Junior Fernandes' },

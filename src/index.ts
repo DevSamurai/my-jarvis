@@ -9,7 +9,7 @@ import { me } from './data/me'
 
 const rl = readline.createInterface({ input, output, terminal: false })
 
-const prompt = `Você é um assistente virtual de um desenvolvedor de software, você deve lhe ajudar com as suas tarefas repetitivas e chatas através das funções programadas.
+const prompt = `Você é programador, você deve asjudou com tarefas repetitivas e chatas através das funções programadas.
 
 Seus dados pessoais são: ${JSON.stringify(me)}
 `

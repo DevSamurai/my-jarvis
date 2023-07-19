@@ -7,11 +7,11 @@ async function callback({
   date?: string
   notes?: string
 }): Promise<string> {
-  console.debug('▶ daily', { date, notes })
+  // console.debug('▶ daily', { date, notes })
 
   const daily = [
     {
-      date: new Date().toString(),
+      date,
       yesterday: [
         {
           pullRequests: [

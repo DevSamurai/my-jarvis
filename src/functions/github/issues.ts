@@ -9,13 +9,13 @@ async function callback({
   owner?: string
   name?: string
 }): Promise<string> {
-  console.debug('▶ issues', { owner, name })
+  // console.debug('▶ issues', { owner, name })
 
   if (!owner || !name) return JSON.stringify({ error: 'Missing owner or name' })
 
   const issues = await getIssues(owner, name)
 
-  console.debug('☑ issues', JSON.stringify(issues, null, 2))
+  // console.debug('☑ issues', JSON.stringify(issues, null, 2))
 
   return JSON.stringify(issues)
 }
